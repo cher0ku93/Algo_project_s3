@@ -131,10 +131,19 @@ int menu2() {
             }
         }
         case 4:{
+
+            //------------------------------------------//
+            FILE *log_file = fopen("log.txt","w");
+            char format[] = "%d\t%s\t%s\n" ;
+            int level2;
+            char *time_lvl0;
+            char *time_all_levels;
+            //------------------------------------------//
+
+
             srand( time);
             printf("\nCalcul du temps de recherche\n");
             int nb_level, current;
-            //t_d_list list;
             int *levels;
 
             printf("Choisissez le nombre de niveau : ");
@@ -166,6 +175,7 @@ int menu2() {
                 displayTime();
                 printf("\n");
             }
+            time_lvl0 = getTimeAsString(); // fonction du module timer
 
             //---------------------------------------------
 
@@ -182,8 +192,94 @@ int menu2() {
                 displayTime();
                 printf("\n");
             }
-            back();
+            time_all_levels = getTimeAsString();
+            fprintf(log_file,format,level,time_lvl0, time_all_levels);
+            fclose(log_file);
+            //back();
+/*
+            FILE *log_file = fopen("../part_2/log.txt", "w");
+            char format[] = "%d\t%s\t%s\n";
+            int level2;
+            char *time_lvl0;
+            char *time_all_levels;
 
+            srand((unsigned int)time(NULL));
+
+            //-----------------------------------------
+
+            int nb_level, current;
+            int *levels;
+
+            printf("Choisissez le nombre de niveau : ");
+            scanf("%d", &nb_level);
+            while (nb_level < 1) {
+                printf("Le nombre de niveau doit être supérieur à 0 : ");
+                scanf("%d", &nb_level);
+            }
+
+            mylist2 = createList(nb_level);
+            mylist2->max_levels = ((int)pow(2, nb_level) - 1);
+
+            levels = createLevels2(nb_level);
+
+            // Affichage des niveaux testés
+            for (int a = 0; a < nb_level; a++) {
+                printf("Niveau %d testé\n", a);
+
+                for (current = 0; current < (pow(2, nb_level) - 1); current++) {
+                    insertList(mylist2, current + 1, levels[current] + 1);
+                }
+                // ... (Démarrer le timer)
+                startTimer();
+
+                // Recherche au niveau 0
+                printf("Resultat pour la recherche au niveau 0 :\n");
+                for (int n = 1000; n <= 100000; n *= 10) {
+                    printf("-Pour %d valeurs : ", n);
+                    startTimer();
+                    int w;
+                    for (int k = 0; k < n; k++) {
+                        w = rand() % ((int)pow(2, nb_level) - 1);
+                        recherche_niveau0(w, *mylist2, 0);
+                    }
+                    stopTimer();
+                    displayTime();
+                    printf("\n");
+                }
+                time_lvl0 = getTimeAsString();
+
+                //---------------------------------------------
+
+                // Recherche multi-niveaux
+                printf("Resultat pour la recherche dicho :\n");
+                for (int n = 1000; n <= 100000; n *= 10) {
+                    printf("-Pour %d valeurs : ", n);
+                    startTimer();
+                    int w;
+                    for (int k = 0; k < n; k++) {
+                        w = rand() % ((int)pow(2, nb_level) - 1);
+                        recherche_dicho(*mylist2, nb_level, w);
+                    }
+                    stopTimer();
+                    displayTime();
+                    printf("\n");
+                }
+                time_all_levels = getTimeAsString();
+
+                fprintf(log_file, format, a, time_lvl0, time_all_levels);
+                // ... (Arrêter le timer et afficher ou enregistrer le temps écoulé)
+                stopTimer();
+                //displayTime();
+                printf("\n");
+                // ... (Ajouter 1 au niveau testé, la liste double de taille)
+
+            }
+
+            fclose(log_file);*/
+            fflush(stdin);
+            fflush(stdout);
+            menu2();
+            break;
 
         }
         case 5: {
