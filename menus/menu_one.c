@@ -1,8 +1,9 @@
 //
-// Created by Ilyès K on 2023.
+// Created by Ilyès, Diaby, Hippolyte
 //
 
 #include "menu_one.h"
+#include "menu_three.h"
 #include "menu_two.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -50,11 +51,11 @@ void back1(){
                 break;
             }
             case 3 : {
-                printf("En cours...");
+                menu3();
                 break;
             }
             default: {
-                printf("Choix incorrect !\n");
+                printf("\nChoix incorrect !\n");
                 menu_principal();
             }
 
@@ -119,7 +120,7 @@ void back1(){
             case 2: {
 
                 if (mylist == NULL) {
-                    printf("\nAttention, vous n'avez pas de listes...\nCommencer par créer une liste avec des niveaux :) !\n");
+                    printf("\nAttention, vous n'avez pas de listes...\nCommencez par créer une liste avec des niveaux :) !\n");
                     menu1();
                 } else {
                     create_and_add_cell_sorted(mylist);
@@ -133,7 +134,7 @@ void back1(){
             case 3: {
                 int niveau;
                 if (mylist == NULL) {
-                    printf("\nAttention, vous n'avez pas de listes...\nCommencer par créer une liste avec des niveaux :) !\n");
+                    printf("\nAttention, vous n'avez pas de listes...\nCommencez par créer une liste avec des niveaux :) !\n");
                     menu1();
                 } else {
                     printf("Saisir le niveau de la liste que vous souhaitez afficher : ");
@@ -153,13 +154,18 @@ void back1(){
             case 4 : {
                 printf("\n---Affichage de la liste---\n");
                 if (mylist == NULL) {
-                    printf("\nAttention, vous n'avez pas de listes...\nCommencer par créer une liste avec des niveaux :) !\n");
+                    printf("\nAttention, vous n'avez pas de listes...\nCommencez par créer une liste avec des niveaux :) !\n");
                     menu1();
                 }
                 display_list(*mylist);
                 menu1();
             }
             case 5 : {
+                printf("%d",mylist->max_levels);
+                if (mylist == NULL) {
+                    printf("\nAttention, vous n'avez pas de listes...\nCommencez par créer une liste avec des niveaux :) !\n");
+                    menu1();
+                }
                 printf("\nSuppression de la liste en cours...");
                 suppression_list(&mylist);
                 printf("\nListe supprimée");

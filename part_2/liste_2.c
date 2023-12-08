@@ -1,11 +1,29 @@
 //
-// Created by Ilyès K on 06/12/2023.
+// Created by Ilyès, Diaby, Hippolyte
 //
 
 #include "liste_2.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include "math.h"
+
+
+
+t_d_list *createList2(int max_l,int puiss) {
+    //Allocation de la mémoire pour la nouvelle liste :
+    t_d_list *new_list = (t_d_list *) malloc(sizeof(t_d_list));
+
+    //Si liste correctement créée :
+    if (new_list != NULL) {
+        new_list->max_levels = max_l;
+        new_list->heads = (t_d_cell **) malloc(puiss * sizeof(t_d_cell *));
+        //Initialisation des heads à NULL :1
+        for (int i = 0; i < puiss; i++) {
+            new_list->heads[i] = NULL;
+        }
+        return new_list;
+    }
+}
 
 //Création des niveaux en fonction de la puissances//
 int* createLevels2(int nb_level) {
@@ -45,7 +63,6 @@ void insertList(t_d_list *list, int val, int level) {
             new_cell->next[i] = temp;
         }
     }
-    return;
 }
 
 //Fonction pour sécuriser la saisie//
@@ -66,14 +83,14 @@ int saisie_secur() {
 
 //Fonction de recherche dans le niveau zéro//
 int recherche_niveau0(int val, t_d_list list, int level){
-        t_d_cell *temp = list.heads[level];
-        while (temp != NULL && temp->value <= val) {
-            if (temp->value == val) {
-                return 1;
-            }
-            temp = temp->next[level];
+    t_d_cell *temp = list.heads[level];
+    while (temp != NULL && temp->value <= val) {
+        if (temp->value == val) {
+            return 1;
         }
-        return 0;
+        temp = temp->next[level];
+    }
+    return 0;
 }
 
 //Fonction recherche dichotomique//
@@ -85,11 +102,10 @@ int recherche_dicho(t_d_list mylist, int levelmax, int val)
     temp = mylist.heads[levelmax-1];
     while (temp!=NULL && i<=levelmax+1)
     {
-        if (temp->value == val)
-        {
+        if (temp->value == val) {
             return 1;
         }
-        else if (temp->value >val && temp == mylist.heads[levelmax-j])
+        else if (temp->value > val && temp == mylist.heads[levelmax-j])
         {
             temp = mylist.heads[levelmax-i];
             i++;
@@ -107,8 +123,39 @@ int recherche_dicho(t_d_list mylist, int levelmax, int val)
             i++;
         }
     }
+
     return 0;
 }
+
+/*int recherche_dicho(t_d_list mylist, int levelmax, int val) {
+    int i = levelmax - 1;
+    t_d_cell *temp = mylist.heads[i];
+    while (temp != NULL && i >= 0) {if (temp->value == val) {
+            printf("Liste no : %d et val no : %d ",i,mylist.heads[i]->value);
+            return 1; // Valeur trouvée
+        } else if (temp->value > val) {
+            // Si la valeur actuelle est plus grande, descendre d'un niveau
+            i--;
+            if (i >= 0) {
+                temp = mylist.heads[i];
+            }
+        } else {
+            // Avancer dans la liste au niveau courant
+            t_d_cell *prev = temp;
+            temp = temp->next[i];
+            if (temp == NULL || temp->value > val) {
+                // Si la prochaine valeur est plus grande, descendre d'un niveau
+                i--;
+                if (i >= 0) {
+                    temp = mylist.heads[i];
+                }
+            }
+        }
+    }
+
+    return 0; // La valeur n'a pas été trouvée
+}*/
+
 
 //Fonction d'affichage de la partie 2//
 void display_list2(t_d_list list,int n) {
@@ -161,10 +208,5 @@ void suppression_list2(t_d_list **list,int n) {
     free(*list);
     *list = NULL;
 }
-
-
-
-
-
 
 

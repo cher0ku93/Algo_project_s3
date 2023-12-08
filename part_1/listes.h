@@ -1,5 +1,5 @@
 //
-// Created by Ilyès K on 03/12/2023.
+// Created by Ilyès, Diaby, Hippolyte
 //
 
 #ifndef PROJET_S3_LISTES_H
@@ -10,7 +10,7 @@
 
 typedef struct s_d_list
 {
-    int max_levels;
+    int max_levels; //nombre maximum de niveaux(heads)
     t_d_cell **heads;
 } t_d_list;
 

@@ -1,5 +1,5 @@
 //
-// Created by Ilyès K on 03/12/2023.
+// Created by Ilyès, Diaby, Hippolyte
 //
 
 #ifndef PROJET_S3_CELLULES_H
@@ -8,7 +8,7 @@
 struct s_d_cell
 {
     int value;
-    int lev_max;
+    int lev_max;//nombre maximum de cellule
     struct s_d_cell **next;
 };
 

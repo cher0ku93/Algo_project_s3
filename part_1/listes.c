@@ -1,5 +1,5 @@
 //
-// Created by Ilyès K on 03/12/2023.
+// Created by Ilyès, Diaby, Hippolyte
 //
 
 #include "listes.h"
@@ -15,6 +15,7 @@ t_d_list *createList(int max_l){
     if(new_list!=NULL){
         new_list->max_levels = max_l;
         new_list->heads = (t_d_cell**)malloc(max_l*sizeof (t_d_cell*));
+        //new_list->heads = (t_d_cell**)calloc(max_l, sizeof(t_d_cell*));
         //Initialisation des heads à NULL :1
         for(int i = 0; i<max_l; i++){
             new_list->heads[i] = NULL;}
@@ -149,6 +150,8 @@ void display_list(t_d_list list) {
 }
 
 void suppression_list(t_d_list **list) {
+
+    printf("%d",(*list)->max_levels);
     if (list == NULL || *list == NULL) {
         return;  // Liste déjà vide ou non allouée
     }
