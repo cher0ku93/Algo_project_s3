@@ -7,6 +7,7 @@
 
 #include "../part_1/cellules.h"
 #include "../part_1/listes.h"
+#include "../part_2/listes_2.h"
 
 int menu2();
 
