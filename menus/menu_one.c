@@ -3,8 +3,6 @@
 //
 
 #include "menu_one.h"
-#include "menu_three.h"
-#include "menu_two.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -126,7 +124,6 @@ void back1(){
                     create_and_add_cell_sorted(mylist);
                     printf("\nVoici votre nouvelle liste mise à jour : \n");
                     display_list(*mylist);
-                    //tri_liste(mylist);
                     menu1();
                 }
                 break;
@@ -161,18 +158,23 @@ void back1(){
                 menu1();
             }
             case 5 : {
-                printf("%d",mylist->max_levels);
+                //printf("%d",mylist->max_levels);
                 if (mylist == NULL) {
                     printf("\nAttention, vous n'avez pas de listes...\nCommencez par créer une liste avec des niveaux :) !\n");
                     menu1();
                 }
-                printf("\nSuppression de la liste en cours...");
+                /*printf("\nSuppression de la liste en cours...");
                 suppression_list(&mylist);
-                printf("\nListe supprimée");
+                printf("\nListe supprimée");*/
+                printf("\nFonction déféctueuse dans cette partie suite à une modification de dernière minute.\n"
+                       "Vous pouvez tout de même consulter le code qui est également utiliser dans la partie 2 "
+                       "dans le fichier 'liste.c'\n");
                 back1();
             }
             case 6 : {
                 menu_principal();
+                fflush(stdin);
+                fflush(stdout);
             }
 
 
@@ -181,5 +183,6 @@ void back1(){
                 menu1();
             }
         }
+
         return 0;
     }

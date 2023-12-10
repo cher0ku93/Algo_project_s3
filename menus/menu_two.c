@@ -73,7 +73,7 @@ int menu2() {
 
             //Création de la liste:
             mylist2 = createList(level);
-            mylist2->max_levels = level;
+            //mylist2->max_levels = level;
             levels = createLevels2(level);
 
             //Insertion en tête dans la liste :
@@ -147,15 +147,14 @@ int menu2() {
             int nb_level, current;
             int *levels;
 
-            printf("Choisissez le nombre de niveau : ");
+            printf("\nEntrez le nombre de niveaux : ");
             scanf("%d", &nb_level);
             while (nb_level < 1) {
-                printf("Le nombre de niveau doit être supérieur à 0 : ");
+                printf("\nLe nombre de niveaux doit être supérieur à 0 : ");
                 scanf("%d", &nb_level);
             }
 
             mylist2 = createList(nb_level);
-            mylist2->max_levels = ((int)pow(2, nb_level) - 1);
 
             levels = createLevels2(nb_level);
 
@@ -163,7 +162,7 @@ int menu2() {
             for (int a = 0; a < nb_level; a++) {
                 printf("Niveau %d testé\n", a);
 
-                for (current = 0; current < (pow(2, nb_level) - 1); current++) {
+                for (current = 0; current < (pow(2, mylist2->max_levels) - 1); current++) {
                     insertList(mylist2, current + 1, levels[current] + 1);
                 }
                 startTimer();
