@@ -1,5 +1,5 @@
 //
-// Created by Ilyès K on 03/12/2023.
+// Created by Ilyès, Diaby, Hippolyte
 //
 
 #include "cellules.h"
@@ -29,10 +29,3 @@ t_d_cell *create_cell(int val,int max){
 
 }
 
-void freeCell(t_d_cell *cell)
-{
-    // Libérer la mémoire allouée pour le tableau de pointeurs
-    free(cell->next);
-    // Libérer la mémoire de la cellule elle-même
-    free(cell);
-}

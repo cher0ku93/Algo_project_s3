@@ -1,5 +1,5 @@
 //
-// Created by Ilyès K on 06/12/2023.
+// Created by Ilyès, Diaby, Hippolyte
 //
 
 #ifndef PROJET_S3_LISTE_2_H
@@ -7,7 +7,10 @@
 
 #include "../part_1/listes.h"
 
+#include "../part_1/listes.h"
+
 int* createLevels2(int nb_level);
+
 
 //t_d_list *createList2(int puissance);
 int saisie_secur();

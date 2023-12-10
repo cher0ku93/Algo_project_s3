@@ -1,5 +1,5 @@
 //
-// Created by Ilyès K on 03/12/2023.
+// Created by Ilyès, Diaby, Hippolyte
 //
 
 #include "listes.h"
@@ -149,6 +149,8 @@ void display_list(t_d_list list) {
 }
 
 void suppression_list(t_d_list **list) {
+
+    printf("%d",(*list)->max_levels);
     if (list == NULL || *list == NULL) {
         return;  // Liste déjà vide ou non allouée
     }
