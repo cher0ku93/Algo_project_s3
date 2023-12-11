@@ -5,8 +5,8 @@ Pour un bon fonctionnement du projet, suivez les instructions suivantes :
 
 Windows : 
   - Ouvrez Clion et creez un projet 'Projet_S3'
-  - Créez les fichiers à l'identique. Tout les dossier ainsi que les .c/.h doivent être créer
-  - remplacer les fichiers par ceux présent sur Github et lancez le run.
+  - Créez les fichiers à l'identique. Tout les dossiers ainsi que les .c/.h doivent être créer
+  - Remplacez les fichiers par ceux présents sur Github et lancez le run.
 
 OS X : 
   - Téléchargez le fichier.zip 'OS_X'
